@@ -25,7 +25,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/complaints', require('./routes/complaintRoutes'));
 
 app.get('/', (req, res) => {
-  res.send('Complaint Management API is running...');
+  res.send('IssueDesk API is running...');
 });
 
 const PORT = process.env.PORT || 5000;

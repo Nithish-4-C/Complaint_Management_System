@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CMS - Admin Dashboard</title>
+  <title>IssueDesk — Admin Dashboard</title>
+  <meta name="description" content="IssueDesk Admin Dashboard: Manage and resolve all submitted issues.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="alert-container" class="alert-container"></div>
-
   <div class="app-container">
-    <!-- Admin Navbar -->
     <nav class="navbar" style="border-bottom: 3px solid var(--danger)">
-      <div class="nav-brand">📋 CMS <span style="font-size: 0.75em; color: var(--danger); font-weight:600; margin-left:0.25rem;">ADMIN</span></div>
+      <div class="nav-brand"><img src="logo.svg" alt="IssueDesk" style="width:26px;height:26px;"> IssueDesk <span style="font-size: 0.75em; color: var(--danger); font-weight:600; margin-left:0.25rem;">ADMIN</span></div>
       <ul class="nav-links">
         <li><a href="admin.html" class="active">🏠 Dashboard</a></li>
         <li><a href="#" onclick="filterComplaints('Pending'); return false;">🔴 Pending</a></li>
@@ -27,43 +26,27 @@
         <button class="btn btn-sm btn-danger" onclick="logout()">Logout</button>
       </div>
     </nav>
-
     <main class="main-content">
-      <!-- Summary Cards -->
       <div class="summary-grid" id="summary-cards">
         <div class="summary-card">
           <div class="summary-icon total">📊</div>
-          <div class="summary-info">
-            <h3 id="stat-total">0</h3>
-            <p>Total Complaints</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-total">0</h3><p>Total Issues</p></div>
         </div>
         <div class="summary-card">
           <div class="summary-icon pending">🔴</div>
-          <div class="summary-info">
-            <h3 id="stat-pending">0</h3>
-            <p>Pending</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-pending">0</h3><p>Pending</p></div>
         </div>
         <div class="summary-card">
           <div class="summary-icon progress">🟠</div>
-          <div class="summary-info">
-            <h3 id="stat-progress">0</h3>
-            <p>In Progress</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-progress">0</h3><p>In Progress</p></div>
         </div>
         <div class="summary-card">
           <div class="summary-icon resolved">🟢</div>
-          <div class="summary-info">
-            <h3 id="stat-resolved">0</h3>
-            <p>Resolved</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-resolved">0</h3><p>Resolved</p></div>
         </div>
       </div>
-
-      <!-- Chart Section -->
       <div class="chart-section">
-        <h3>📈 Complaint Distribution</h3>
+        <h3>📈 Issue Distribution</h3>
         <div class="chart-bars">
           <div class="chart-bar-wrapper">
             <div class="chart-bar-value" id="chart-val-pending">0</div>
@@ -82,21 +65,13 @@
           </div>
         </div>
       </div>
-
-      <!-- Dashboard Header -->
-      <div class="dashboard-header">
-        <h2>Manage All Complaints</h2>
-      </div>
-
-      <!-- Status Tabs -->
-      <div class="auth-tabs" style="margin-bottom: 1rem; display: flex; background: var(--card-bg); border-radius: var(--radius); padding: 0.25rem; box-shadow: var(--shadow);">
+      <div class="dashboard-header"><h2>Manage All Issues</h2></div>
+      <div class="auth-tabs" style="margin-bottom: 1rem; display: flex; background: var(--bg-card); border-radius: var(--radius); padding: 0.25rem; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
         <button class="tab-btn active" id="tab-all" onclick="filterComplaints('')">All</button>
         <button class="tab-btn" id="tab-pending" onclick="filterComplaints('Pending')">🔴 Pending</button>
         <button class="tab-btn" id="tab-progress" onclick="filterComplaints('In Progress')">🟠 In Progress</button>
         <button class="tab-btn" id="tab-resolved" onclick="filterComplaints('Resolved')">🟢 Resolved</button>
       </div>
-
-      <!-- Search / Filter Toolbar -->
       <div class="toolbar">
         <div class="search-box">
           <input type="text" id="search-input" placeholder="Search by title..." oninput="handleSearch()">
@@ -113,8 +88,6 @@
           <option value="oldest">Oldest First</option>
         </select>
       </div>
-
-      <!-- Complaints Table -->
       <div class="card">
         <div class="table-container">
           <table id="admin-complaints-table">
@@ -137,7 +110,6 @@
       </div>
     </main>
   </div>
-
   <script src="js/particles.js"></script>
   <script src="js/api.js"></script>
   <script src="js/admin.js"></script>

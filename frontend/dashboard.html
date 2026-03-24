@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CMS - My Dashboard</title>
+  <title>IssueDesk — My Dashboard</title>
+  <meta name="description" content="View and manage your submitted issues on IssueDesk.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="alert-container" class="alert-container"></div>
-
   <div class="app-container">
-    <!-- Enhanced Navbar with links -->
     <nav class="navbar">
-      <div class="nav-brand">📋 CMS</div>
+      <div class="nav-brand"><img src="logo.svg" alt="IssueDesk" style="width:26px;height:26px;"> IssueDesk</div>
       <ul class="nav-links">
         <li><a href="dashboard.html" class="active">🏠 Home</a></li>
-        <li><a href="dashboard.html" id="nav-complaints">📁 My Complaints</a></li>
-        <li><a href="#" onclick="openModal(); return false;">✏️ Submit Complaint</a></li>
+        <li><a href="dashboard.html" id="nav-complaints">📁 My Issues</a></li>
+        <li><a href="#" onclick="openModal(); return false;">✏️ Submit Issue</a></li>
         <li><a href="profile.html">👤 Profile</a></li>
       </ul>
       <div class="nav-right">
@@ -27,53 +26,35 @@
         <button class="btn btn-sm btn-danger" onclick="logout()">Logout</button>
       </div>
     </nav>
-
     <main class="main-content">
-      <!-- User Profile Card -->
       <div class="profile-card" id="profile-section">
         <div class="profile-avatar" id="profile-avatar">U</div>
         <div class="profile-info">
           <h3 id="profile-name">User</h3>
           <p id="profile-email">user@email.com</p>
-          <p id="profile-total" style="margin-top:0.25rem; font-weight:600; color: var(--primary);">0 complaints submitted</p>
+          <p id="profile-total" style="margin-top:0.25rem; font-weight:600; color: var(--primary);">0 issues submitted</p>
         </div>
       </div>
-
-      <!-- Summary Cards -->
       <div class="summary-grid" id="summary-cards">
         <div class="summary-card">
           <div class="summary-icon total">📊</div>
-          <div class="summary-info">
-            <h3 id="stat-total">0</h3>
-            <p>Total Complaints</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-total">0</h3><p>Total Issues</p></div>
         </div>
         <div class="summary-card">
           <div class="summary-icon pending">🔴</div>
-          <div class="summary-info">
-            <h3 id="stat-pending">0</h3>
-            <p>Pending</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-pending">0</h3><p>Pending</p></div>
         </div>
         <div class="summary-card">
           <div class="summary-icon progress">🟠</div>
-          <div class="summary-info">
-            <h3 id="stat-progress">0</h3>
-            <p>In Progress</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-progress">0</h3><p>In Progress</p></div>
         </div>
         <div class="summary-card">
           <div class="summary-icon resolved">🟢</div>
-          <div class="summary-info">
-            <h3 id="stat-resolved">0</h3>
-            <p>Resolved</p>
-          </div>
+          <div class="summary-info"><h3 id="stat-resolved">0</h3><p>Resolved</p></div>
         </div>
       </div>
-
-      <!-- Chart Section -->
       <div class="chart-section">
-        <h3>📈 Complaint Distribution</h3>
+        <h3>📈 Issue Distribution</h3>
         <div class="chart-bars">
           <div class="chart-bar-wrapper">
             <div class="chart-bar-value" id="chart-val-pending">0</div>
@@ -92,14 +73,10 @@
           </div>
         </div>
       </div>
-
-      <!-- Dashboard Header & Submit Button -->
       <div class="dashboard-header">
-        <h2>My Complaints</h2>
-        <button class="btn btn-primary" onclick="openModal()">✏️ Submit Complaint</button>
+        <h2>My Issues</h2>
+        <button class="btn btn-primary" onclick="openModal()">✏️ Submit Issue</button>
       </div>
-
-      <!-- Search & Filter Toolbar -->
       <div class="toolbar">
         <div class="search-box">
           <input type="text" id="search-input" placeholder="Search by title..." oninput="handleSearch()">
@@ -122,19 +99,15 @@
           <option value="oldest">Oldest First</option>
         </select>
       </div>
-
-      <!-- Complaint Cards Container -->
       <div class="complaints-grid" id="complaints-list">
         <div class="spinner-container"><div class="spinner"></div></div>
       </div>
     </main>
   </div>
-
-  <!-- Create Complaint Modal -->
   <div class="modal-overlay" id="complaint-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>✏️ Submit New Complaint</h3>
+        <h3>✏️ Submit New Issue</h3>
         <button class="close-btn" onclick="closeModal()">&times;</button>
       </div>
       <form id="create-complaint-form">
@@ -170,7 +143,6 @@
       </form>
     </div>
   </div>
-
   <script src="js/particles.js"></script>
   <script src="js/api.js"></script>
   <script src="js/dashboard.js"></script>

@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CMS - Admin Portal</title>
+  <title>IssueDesk — Admin Portal</title>
+  <meta name="description" content="IssueDesk Admin: Secure administrator login portal.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="auth-page">
   <div id="alert-container" class="alert-container"></div>
-  
   <div class="auth-container" style="border-top: 4px solid var(--danger);">
     <div class="auth-header">
-      <h2 style="color: var(--danger);">🔒 Admin Portal</h2>
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.5rem;">
+        <img src="logo.svg" alt="IssueDesk" style="width:36px;height:36px;">
+      </div>
+      <h2 style="color: var(--danger);">IssueDesk ADMIN</h2>
       <p>Secure System Access</p>
     </div>
-
-    <!-- Admin Login Form -->
     <form id="admin-login-form" class="auth-form active-form">
       <div class="form-group">
         <label for="admin-email">Administrator Email</label>
@@ -27,28 +28,22 @@
       </div>
       <button type="submit" class="btn btn-danger btn-block" style="margin-top: 1rem;">🔐 Authenticate</button>
     </form>
-    
     <div style="text-align: center; margin-top: 1.5rem;">
       <a href="login.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">← Return to Student Portal</a>
     </div>
   </div>
-
   <script src="js/particles.js"></script>
   <script src="js/api.js"></script>
   <script>
-    // Admin-only login: rejects non-admin accounts
     document.getElementById('admin-login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = document.getElementById('admin-email').value;
       const password = document.getElementById('admin-password').value;
-
       try {
         const data = await fetchAPI('/auth/login', 'POST', { email, password });
-        
         if (data.user.role !== 'admin') {
           throw new Error('Access Denied: You are not an administrator.');
         }
-
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         showAlert('✅ Admin Access Granted', 'success');
